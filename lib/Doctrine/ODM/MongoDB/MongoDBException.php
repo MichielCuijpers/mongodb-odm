@@ -160,4 +160,14 @@ class MongoDBException extends \Exception
     {
         return new self('There is already a commit operation in progress. Did you call flush from an event listener?');
     }
+
+    public static function documentCollectionNotAvailableForGridFSFile(string $className): self
+    {
+        return new self(sprintf('Cannot fetch document collection for GridFS file "%s".', $className));
+    }
+
+    public static function documentBucketOnlyAvailableForGridFSFiles(string $className): self
+    {
+        return new self(sprintf('Cannot fetch document bucket for document "%s".', $className));
+    }
 }
